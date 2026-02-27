@@ -6,9 +6,9 @@ export default function Navbar({ savedCount, reviewedCount, onOpenSaved, onOpenR
     <nav style={{ backgroundColor: '#ffffff', borderBottom: '1px solid #e5e7eb', position: 'sticky', top: 0, zIndex: 50 }}
       className="flex items-center justify-between px-6 py-3">
       <div className="flex items-center gap-2">
-        <PiStudent style={{ color: '#6366f1', fontSize: 28 }} />
-        <span className="font-syne font-extrabold text-xl text-indigo-600">
-          ProfSwipe
+        <PiStudent style={{ color: '#003366', fontSize: 28 }} />
+        <span className="font-syne font-extrabold text-xl" style={{ color: '#003366' }}>
+          College of Florida
         </span>
       </div>
 
@@ -29,7 +29,7 @@ export default function Navbar({ savedCount, reviewedCount, onOpenSaved, onOpenR
         </button>
 
         <button onClick={onOpenSaved}
-          className="flex items-center gap-2 px-4 py-2 bg-indigo-500 text-white rounded hover:bg-indigo-600 text-sm font-semibold">
+          className="flex items-center gap-2 px-4 py-2 text-white rounded hover:opacity-90 text-sm font-semibold" style={{ backgroundColor: '#003366' }}>
           <FaHeart />
           Wishlist
           {savedCount > 0 && (

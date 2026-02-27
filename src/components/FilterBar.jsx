@@ -12,40 +12,32 @@ const selectStyle = {
 }
 
 export default function FilterBar({ professors, filters, onChange }) {
-  const departments = ['All', ...new Set(professors.map(p => p.department))].sort()
-  const levels = ['All', 'Undergraduate', 'Graduate', 'PhD']
-  const years = ['All', ...new Set(professors.map(p => p.year))].sort((a, b) => b - a)
+  // Filter departments to only Computer Science and Psychology
+  const departments = ['All', 'Computer Science', 'Psychology']
   const update = (key, value) => onChange(prev => ({ ...prev, [key]: value }))
 
   return (
-    <div className="bg-white border rounded-lg p-4 mb-6 flex flex-wrap gap-3 items-center">
-      <div className="flex items-center gap-2 text-indigo-600 font-semibold text-sm">
+    <div className="bg-white border rounded-lg p-4 mb-6 flex flex-wrap gap-3 items-center" style={{ borderColor: '#FF9900' }}>
+      {/* Department Filter - Choose between all professors or a specific department */}
+      <div className="flex items-center gap-2 font-semibold text-sm" style={{ color: '#003366' }}>
         <FaFilter />
-        <span>Filter</span>
+        <span>Filter by Department</span>
       </div>
 
-      <select style={selectStyle} value={filters.department} onChange={e => update('department', e.target.value)}>
+      <select style={{ ...selectStyle, borderColor: '#FF9900' }} value={filters.department} onChange={e => update('department', e.target.value)}>
         <option value="All">All Departments</option>
-        {departments.filter(d => d !== 'All').map(d => <option key={d} value={d}>{d}</option>)}
+        <option value="Computer Science">Computer Science</option>
+        <option value="Psychology">Psychology</option>
       </select>
 
-      <select style={selectStyle} value={filters.level} onChange={e => update('level', e.target.value)}>
-        {levels.map(l => <option key={l} value={l}>{l === 'All' ? 'All Levels' : l}</option>)}
-      </select>
-
-      <select style={selectStyle} value={filters.year} onChange={e => update('year', e.target.value)}>
-        <option value="All">All Years</option>
-        {years.filter(y => y !== 'All').map(y => <option key={y} value={y}>{y}</option>)}
-      </select>
-
-      <div className="flex items-center gap-2 text-pink-600 font-semibold text-sm">
+      {/* Sort Option - Organize professors by highest rating */}
+      <div className="flex items-center gap-2 font-semibold text-sm" style={{ color: '#FF9900' }}>
         <FaSortAmountDown />
         <span>Sort</span>
       </div>
 
-      <select style={selectStyle} value={filters.sortBy} onChange={e => update('sortBy', e.target.value)}>
+      <select style={{ ...selectStyle, borderColor: '#FF9900' }} value={filters.sortBy} onChange={e => update('sortBy', e.target.value)}>
         <option value="rating">Highest Rated</option>
-        <option value="name">Name A–Z</option>
       </select>
     </div>
   )

@@ -1,6 +1,4 @@
 import { useState, useEffect } from 'react'
-import { ToastContainer } from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css'
 
 import Navbar from './components/Navbar'
 import Header from './components/Header'
@@ -27,8 +25,6 @@ const [reviewed, setReviewed] = useState(() => {
   const [reviewedOpen, setReviewedOpen] = useState(false)
   const [filters, setFilters] = useState({
     department: 'All',
-    level: 'All',
-    year: 'All',
     sortBy: 'rating',
   })
 
@@ -50,11 +46,7 @@ const [reviewed, setReviewed] = useState(() => {
   useEffect(() => {
     let result = [...professors]
     if (filters.department !== 'All') result = result.filter(p => p.department === filters.department)
-    if (filters.level !== 'All') result = result.filter(p => p.level === filters.level)
-    if (filters.year !== 'All') result = result.filter(p => p.year === Number(filters.year))
     if (filters.sortBy === 'rating') result.sort((a, b) => b.rating - a.rating)
-    else if (filters.sortBy === 'difficulty_asc') result.sort((a, b) => a.difficulty - b.difficulty)
-    else if (filters.sortBy === 'name') result.sort((a, b) => a.name.localeCompare(b.name))
     setFiltered(result)
   }, [professors, filters])
 
@@ -88,7 +80,6 @@ const [reviewed, setReviewed] = useState(() => {
       <Footer />
       <SavedDrawer isOpen={drawerOpen} onClose={() => setDrawerOpen(false)} saved={saved} onUnsave={handleUnsave} />
       {reviewedOpen && <ReviewedList reviewed={reviewed} onClose={() => setReviewedOpen(false)} />}
-      <ToastContainer position="bottom-center" autoClose={2000} theme="light" />
     </div>
   )
 }

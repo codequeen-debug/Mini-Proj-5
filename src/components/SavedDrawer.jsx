@@ -1,5 +1,4 @@
 import { FaDownload, FaTimes, FaTrash } from 'react-icons/fa'
-import { toast } from 'react-toastify'
 
 function downloadCSV(saved) {
   const headers = 'Name,Department,Subject,Level,Year,Rating,Difficulty,Would Take Again %\n'
@@ -53,7 +52,7 @@ export default function SavedDrawer({ isOpen, onClose, saved, onUnsave }) {
                 <p style={{ color: '#570df8', fontSize: 12, margin: '2px 0 0' }}>{prof.subject}</p>
                 <span style={{ backgroundColor: '#570df820', color: '#570df8', borderRadius: 999, padding: '1px 8px', fontSize: 11 }}>⭐ {prof.rating}</span>
               </div>
-              <button onClick={() => { onUnsave(prof.id); toast(`Removed ${prof.name}`) }}
+              <button onClick={() => onUnsave(prof.id)}
                 style={{ background: 'none', border: 'none', color: '#f87272', cursor: 'pointer', fontSize: 14, padding: 4 }}>
                 <FaTrash />
               </button>
@@ -65,11 +64,11 @@ export default function SavedDrawer({ isOpen, onClose, saved, onUnsave }) {
         {saved.length > 0 && (
           <div style={{ padding: 16, borderTop: '1px solid #2a323c', display: 'flex', flexDirection: 'column', gap: 8 }}>
             <p style={{ color: '#4b5563', fontSize: 11, fontWeight: 700, textTransform: 'uppercase', letterSpacing: 1, margin: '0 0 4px' }}>Download Wishlist</p>
-            <button onClick={() => { downloadCSV(saved); toast('📥 CSV downloaded!') }}
+            <button onClick={() => downloadCSV(saved)}
               style={{ backgroundColor: '#570df8', color: '#fff', border: 'none', borderRadius: 8, padding: '10px', cursor: 'pointer', fontWeight: 600, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8 }}>
               <FaDownload /> Download as CSV
             </button>
-            <button onClick={() => { downloadJSON(saved); toast('📥 JSON downloaded!') }}
+            <button onClick={() => downloadJSON(saved)}
               style={{ backgroundColor: 'transparent', color: '#570df8', border: '1px solid #570df8', borderRadius: 8, padding: '10px', cursor: 'pointer', fontWeight: 600, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8 }}>
               <FaDownload /> Download as JSON
             </button>
