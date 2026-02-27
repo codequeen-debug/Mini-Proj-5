@@ -1,4 +1,4 @@
-# ProfSwipe 🎓
+# ProfSwipe Revamped 🎓
 
 A Tinder-style Rate My Professor React app built with Vite + Tailwind v4 + DaisyUI v5.
 
@@ -42,8 +42,4 @@ profswipe/
 └── package.json
 ```
 
-## 🛠 Tech Stack
 
-- React 18 + Vite 5
-- Tailwind CSS v4 + DaisyUI v5 (night theme)
-- React-Toastify, React-Icons, jsPDF
