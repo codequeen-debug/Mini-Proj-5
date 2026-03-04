@@ -1,7 +1,19 @@
 import { PiStudent } from 'react-icons/pi'
 import { FaHeart, FaCheckCircle } from 'react-icons/fa'
+import { Link } from 'react-router-dom'
+import { useAuth } from '../contexts/AuthContext'
 
 export default function Navbar({ savedCount, reviewedCount, onOpenSaved, onOpenReviewed }) {
+  const { currentUser, logout } = useAuth()
+
+  async function handleLogout() {
+    try {
+      await logout()
+    } catch (err) {
+      console.error('Logout failed', err)
+    }
+  }
+
   return (
     <nav style={{ backgroundColor: '#ffffff', borderBottom: '1px solid #e5e7eb', position: 'sticky', top: 0, zIndex: 50 }}
       className="flex items-center justify-between px-6 py-3">
@@ -38,6 +50,21 @@ export default function Navbar({ savedCount, reviewedCount, onOpenSaved, onOpenR
             </span>
           )}
         </button>
+
+        <div className="ml-2">
+          {currentUser ? (
+            <div className="flex items-center gap-3">
+              <span className="text-sm">{currentUser.email}</span>
+              <button onClick={handleLogout} className="btn btn-ghost btn-sm">Logout</button>
+              <Link to="/dashboard" className="btn btn-sm">Dashboard</Link>
+            </div>
+          ) : (
+            <div className="flex items-center gap-2">
+              <Link to="/login" className="text-sm text-blue-600">Login</Link>
+              <Link to="/signup" className="text-sm text-blue-600">Sign Up</Link>
+            </div>
+          )}
+        </div>
       </div>
     </nav>
   )

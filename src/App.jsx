@@ -1,4 +1,6 @@
 import { useState, useEffect } from 'react'
+import { Routes, Route, Link } from 'react-router-dom'
+import { useAuth } from './contexts/AuthContext'
 
 import Navbar from './components/Navbar'
 import Header from './components/Header'
@@ -8,6 +10,9 @@ import SavedDrawer from './components/SavedDrawer'
 import ReviewedList from './components/ReviewedList'
 import Loader from './components/Loader'
 import Footer from './components/Footer'
+
+import Login from './pages/Login'
+import Signup from './pages/Signup'
 
 export default function App() {
   const [professors, setProfessors] = useState([])
@@ -62,6 +67,11 @@ const [reviewed, setReviewed] = useState(() => {
   const handleUnsave = (id) => setSaved(prev => prev.filter(p => p.id !== id))
   const handleReviewed = (prof) => setReviewed(prev => prev.find(p => p.id === prof.id) ? prev : [...prev, prof])
 
+  const { currentUser } = useAuth()
+
+  // guests see only a subset of professors
+  const visibleProfessors = currentUser ? filtered : filtered.slice(0, 3)
+
   return (
     <div style={{ minHeight: '100vh' }} className="flex flex-col bg-white text-gray-800">
       <Navbar
@@ -71,12 +81,26 @@ const [reviewed, setReviewed] = useState(() => {
         onOpenReviewed={() => setReviewedOpen(true)}
       />
       <Header />
-      <main className="flex-1 w-full max-w-4xl mx-auto px-4 py-6">
-        <FilterBar professors={professors} filters={filters} onChange={setFilters} />
-        {loading ? <Loader /> : (
-          <SwipeStack professors={filtered} onSave={handleSave} onReviewed={handleReviewed} saved={saved} />
-        )}
-      </main>
+
+      <Routes>
+        <Route path="/" element={(
+          <main className="flex-1 w-full max-w-4xl mx-auto px-4 py-6">
+            <FilterBar professors={professors} filters={filters} onChange={setFilters} />
+            {!currentUser && (
+              <div className="mb-4 p-3 rounded border bg-yellow-50 text-yellow-800">
+                You're viewing a limited preview. <a href="/login" className="underline">Log in</a> to see all professors.
+              </div>
+            )}
+            {loading ? <Loader /> : (
+              <SwipeStack professors={visibleProfessors} onSave={handleSave} onReviewed={handleReviewed} saved={saved} />
+            )}
+          </main>
+        )} />
+
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+      </Routes>
+
       <Footer />
       <SavedDrawer isOpen={drawerOpen} onClose={() => setDrawerOpen(false)} saved={saved} onUnsave={handleUnsave} />
       {reviewedOpen && <ReviewedList reviewed={reviewed} onClose={() => setReviewedOpen(false)} />}
