@@ -1,6 +1,10 @@
 # ProfSwipe Revamped 
 
-A Tinder-style Rate My Professor React app built with Vite + Tailwind v4 + DaisyUI v5.
+A Tinder-style Rate My Professor React app built with Vite + Tailwind v4 + DaisyUI v5 + Firebase.
+
+## Firebase Authentication working
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/e5bc9a25-0ee5-4915-a8cd-f0103559dd73" />
+
 
 ## Live Link
 
