@@ -51,6 +51,7 @@ profswipe/
 │   │   └── AuthContext.jsx
 │   ├── App.jsx
 │   ├── main.jsx
+│   ├── firebase.jsx
 │   └── index.css
 ├── .env                
 ├── .gitignore
