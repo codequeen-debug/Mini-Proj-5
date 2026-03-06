@@ -8,7 +8,7 @@ Makayla Hardware
 Sara-Lee Brown 
 
 ## Live Link
-(https://professorswipe.netlify.app/)
+https://professor-swipe.vercel.app/
 
 ## About the App
 ProfSwipe is a single-page application (SPA) that lets students swipe through professor cards in a Tinder-style interface. Guests can browse a limited preview of professors, while authenticated users unlock full access to filter, sort, like/dislike, and save professors to a watchlist.
