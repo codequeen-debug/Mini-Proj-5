@@ -42,6 +42,13 @@ profswipe/
 │   │   ├── ReviewedList.jsx
 │   │   ├── Loader.jsx
 │   │   └── Footer.jsx
+│   ├── pages/
+│   │   ├── Login.jsx
+│   │   ├── Notfound.jsx
+│   │   ├── Signup.jsx
+│   │   └── Unauthorised.jsx
+│   ├── contexts/
+│   │   └── AuthContext.jsx
 │   ├── App.jsx
 │   ├── main.jsx
 │   └── index.css
