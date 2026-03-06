@@ -27,9 +27,6 @@ ProfSwipe is a single-page application (SPA) that lets students swipe through pr
 
 
 ## 📁 Project Structure
-
-```
-## 📁 Project Structure
 ```
 profswipe/
 ├── public/
@@ -55,8 +52,6 @@ profswipe/
 ├── package.json
 ├── vite.config.js
 └── README.md
-```
-
 ```
 ## 📄 Pages
 
