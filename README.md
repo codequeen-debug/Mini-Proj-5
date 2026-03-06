@@ -4,7 +4,7 @@ A Tinder-style professor rating SPA — swipe right to approve, swipe left to sk
 
 
 ## Live Link
-https://deploy-preview-3--professorswip.netlify.app/
+(https://professorswipe.netlify.app/)
 
 ## About the App
 ProfSwipe is a single-page application (SPA) that lets students swipe through professor cards in a Tinder-style interface. Guests can browse a limited preview of professors, while authenticated users unlock full access to filter, sort, like/dislike, and save professors to a watchlist.
