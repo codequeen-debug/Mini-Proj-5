@@ -2,6 +2,10 @@
 # 🎓 ProfSwipe
 A Tinder-style professor rating SPA — swipe right to approve, swipe left to skip. Built with React, Firebase, and a smooth DaisyUI interface.
 
+## Team Members
+Rich-Ann Campbell
+Makayla Hardware
+Sara-Lee Brown 
 
 ## Live Link
 (https://professorswipe.netlify.app/)
