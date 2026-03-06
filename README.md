@@ -45,7 +45,7 @@ profswipe/
 │   ├── App.jsx
 │   ├── main.jsx
 │   └── index.css
-├── .env                  ← ⚠️ DO NOT commit — add to .gitignore
+├── .env                
 ├── .gitignore
 ├── index.html
 ├── package-lock.json
